@@ -56,31 +56,36 @@
   };
 </script>
 
-  <meta name="description" content="Stay Hungry, Stay Foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RubyRoad">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&amp;lt;Map.Entry&amp;lt;K, V&amp;gt;&amp;gt; entrySet()  //返回此映射中">
+<meta name="keywords" content="Java,Collection,Iterator">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java遍历Map容器的两种方法">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/Java遍历Map容器的两种方法/index.html">
 <meta property="og:site_name" content="RubyRoad">
-<meta property="og:description" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&amp;lt;Map.Entry&amp;lt;K, V&amp;gt;&amp;gt; entrySet()  //返回此映射中">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/.com//test2.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//test1.jpg">
+<meta property="og:updated_time" content="2019-09-16T06:31:21.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RubyRoad">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="Java遍历Map容器的两种方法">
+<meta name="twitter:description" content="在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&amp;lt;Map.Entry&amp;lt;K, V&amp;gt;&amp;gt; entrySet()  //返回此映射中">
+<meta name="twitter:image" content="http://yoursite.com/.com//test2.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/Java遍历Map容器的两种方法/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>RubyRoad</title>
+  <title>Java遍历Map容器的两种方法 | RubyRoad</title>
   
 
 
@@ -260,12 +265,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/Java遍历Map容器的两种方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -278,9 +284,8 @@
       <meta itemprop="name" content="RubyRoad">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/16/Java遍历Map容器的两种方法/" class="post-title-link" itemprop="url">Java遍历Map容器的两种方法</a>
+        <h1 class="post-title" itemprop="name headline">Java遍历Map容器的两种方法
+
           
         </h1>
 
@@ -343,27 +348,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="在Map容器中："><a href="#在Map容器中：" class="headerlink" title="在Map容器中："></a>在Map容器中：</h3><p><strong>values():</strong><br>获取容器中的所有的值，没有键，没有对应关系</p><p><strong>KeySet():</strong><br>将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。</p><p><strong>entrySet():</strong><br>Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()  //返回此映射中包含的映射关系的Set视图。Map.Entry表示映射关系。entrySet()迭代后，可以通过e.getKey(), e.getValue()获取key和value。返回的是Entry接口。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/16/Java遍历Map容器的两种方法/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
+        <h3 id="在Map容器中："><a href="#在Map容器中：" class="headerlink" title="在Map容器中："></a>在Map容器中：</h3><p><strong>values():</strong><br>获取容器中的所有的值，没有键，没有对应关系</p><p><strong>KeySet():</strong><br>将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。</p><p><strong>entrySet():</strong><br>Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()  //返回此映射中包含的映射关系的Set视图。Map.Entry表示映射关系。entrySet()迭代后，可以通过e.getKey(), e.getValue()获取key和value。返回的是Entry接口。</p><a id="more"></a>
+
+
+<hr>
+<h3 id="一、两种遍历Map的方式"><a href="#一、两种遍历Map的方式" class="headerlink" title="一、两种遍历Map的方式"></a>一、两种遍历Map的方式</h3><p>1.通过KeySet()遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">     Integer key = iter.next();</span><br><span class="line">     System.out.println(key + “----“ + keySetMap.get(key)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.通过entrySet()遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">     Map.Entry&lt;Integer, String&gt; temp = iter.next();</span><br><span class="line">     System.out.println(temp.getKey() + “--“ + temp.getValue()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="二、两种方法性能对比"><a href="#二、两种方法性能对比" class="headerlink" title="二、两种方法性能对比"></a>二、两种方法性能对比</h3><h5 id="测试代码如下："><a href="#测试代码如下：" class="headerlink" title="测试代码如下："></a>测试代码如下：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; keySetMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        HashMap&lt;Integer, String&gt; entrySetMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++) &#123;</span><br><span class="line">            keySetMap.put(i, <span class="string">"a"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++) &#123;</span><br><span class="line">            entrySetMap.put(i, <span class="string">"a"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//第一种遍历Map的方式</span></span><br><span class="line">        <span class="keyword">long</span> startTime1 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator();iter.hasNext();) &#123;</span><br><span class="line"></span><br><span class="line">            Integer key = iter.next();</span><br><span class="line">            System.out.print(key + <span class="string">"----"</span> + keySetMap.get(key) + <span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTime1 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"++++++++++++++++++++++++++++++++++"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//第二种遍历Map的方式</span></span><br><span class="line">        <span class="keyword">long</span> startTime2 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Iterator&lt;Map.Entry&lt;Integer,String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line"></span><br><span class="line">            Map.Entry&lt;Integer,String&gt; temp = iter.next();</span><br><span class="line">            System.out.print(temp.getKey() + <span class="string">"--"</span> + temp.getValue() + <span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTime2 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(<span class="string">"第一种遍历耗时："</span> + (endTime1 - startTime1) + <span class="string">"ms"</span>);</span><br><span class="line">        System.out.println(<span class="string">"第二种遍历耗时："</span> + (endTime2 - startTime2) + <span class="string">"ms"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//test2.jpg" alt="test2"><br><img src="/.com//test1.jpg" alt="test1"></p>
+
     </div>
 
     
     
     
-      <footer class="post-footer">
-          <div class="post-eof"></div>
         
+      
+        <div id="reward-container">
+  <div>继续努力哦！走一个.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="RubyZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Java/" rel="tag"># Java</a>
+            
+              <a href="/tags/Collection/" rel="tag"># Collection</a>
+            
+              <a href="/tags/Iterator/" rel="tag"># Iterator</a>
+            
+          </div>
+        
+
+        
+
       </footer>
+    
   </div>
   
   
@@ -371,14 +414,18 @@
 
   </article>
 
-    
   </div>
-
-  
 
 
           </div>
           
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQzMi8yMjk0Mw=="></div>
+  </div>
+  
+  
 
         </div>
           
@@ -673,15 +720,24 @@
   
 
   
-    
-      
-    
-  
 
   
 
   
 
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
 
 
   <!-- 页面点击小红心 -->

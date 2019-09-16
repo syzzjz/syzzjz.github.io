@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[我的第一篇博客文章]]></title>
-    <url>%2F2019%2F09%2F02%2F%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%2F</url>
-    <content type="text"><![CDATA[第一章内容 第二章内容 参考文献www.codesheep.cn]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F09%2F01%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[Java遍历Map容器的两种方法]]></title>
+    <url>%2F2019%2F09%2F16%2FJava%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet() //返回此映射中包含的映射关系的Set视图。Map.Entry表示映射关系。entrySet()迭代后，可以通过e.getKey(), e.getValue()获取key和value。返回的是Entry接口。 一、两种遍历Map的方式1.通过KeySet()遍历 1234for(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator(); iter.hasNext();) &#123; Integer key = iter.next(); System.out.println(key + “----“ + keySetMap.get(key)); &#125; 2.通过entrySet()遍历 1234for(Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123; Map.Entry&lt;Integer, String&gt; temp = iter.next(); System.out.println(temp.getKey() + “--“ + temp.getValue()); &#125; 二、两种方法性能对比测试代码如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546public class Test &#123; public static void main(String[] args) &#123; HashMap&lt;Integer, String&gt; keySetMap = new HashMap&lt;&gt;(); HashMap&lt;Integer, String&gt; entrySetMap = new HashMap&lt;&gt;(); for(int i = 0; i &lt; 5000; i++) &#123; keySetMap.put(i, "a" + i); &#125; for(int i = 0; i &lt; 5000; i++) &#123; entrySetMap.put(i, "a" + i); &#125; //第一种遍历Map的方式 long startTime1 = System.currentTimeMillis(); for(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator();iter.hasNext();) &#123; Integer key = iter.next(); System.out.print(key + "----" + keySetMap.get(key) + ","); &#125; long endTime1 = System.currentTimeMillis(); System.out.println("++++++++++++++++++++++++++++++++++"); //第二种遍历Map的方式 long startTime2 = System.currentTimeMillis(); for(Iterator&lt;Map.Entry&lt;Integer,String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123; Map.Entry&lt;Integer,String&gt; temp = iter.next(); System.out.print(temp.getKey() + "--" + temp.getValue() + ","); &#125; long endTime2 = System.currentTimeMillis(); System.out.println(); System.out.println("第一种遍历耗时：" + (endTime1 - startTime1) + "ms"); System.out.println("第二种遍历耗时：" + (endTime2 - startTime2) + "ms"); &#125;&#125;]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>Collection</tag>
+        <tag>Iterator</tag>
+      </tags>
   </entry>
 </search>
