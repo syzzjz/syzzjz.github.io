@@ -64,13 +64,13 @@
 <meta property="og:site_name" content="RubyRoad">
 <meta property="og:description" content="在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&amp;lt;Map.Entry&amp;lt;K, V&amp;gt;&amp;gt; entrySet()  //返回此映射中">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/.com//test2.jpg">
-<meta property="og:image" content="http://yoursite.com/.com//test1.jpg">
-<meta property="og:updated_time" content="2019-09-16T06:31:21.374Z">
+<meta property="og:image" content="http://yoursite.com/images/Java%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/test2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Java%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/test1.jpg">
+<meta property="og:updated_time" content="2019-09-16T07:25:52.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java遍历Map容器的两种方法">
 <meta name="twitter:description" content="在Map容器中：values():获取容器中的所有的值，没有键，没有对应关系KeySet():将Map中所有的键存入到Set容器中，因为Set具备迭代器。所以可以迭代取出所有的键，再根据get方法，获取每一个键对应的值。KeySet()迭代后，只能通过get()取key。entrySet():Set&amp;lt;Map.Entry&amp;lt;K, V&amp;gt;&amp;gt; entrySet()  //返回此映射中">
-<meta name="twitter:image" content="http://yoursite.com/.com//test2.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/Java%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/test2.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/09/16/Java遍历Map容器的两种方法/">
 
 
@@ -300,7 +300,7 @@
                 
               
 
-              <time title="创建时间：2019-09-16 14:06:32 / 修改时间：06:31:21" itemprop="dateCreated datePublished" datetime="2019-09-16T14:06:32Z">2019-09-16</time>
+              <time title="创建时间：2019-09-16 14:06:32 / 修改时间：07:25:52" itemprop="dateCreated datePublished" datetime="2019-09-16T14:06:32Z">2019-09-16</time>
             </span>
           
             
@@ -325,7 +325,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.3k</span>
+              <span>3.2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -335,7 +335,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -358,11 +358,23 @@
 <p>2.通过entrySet()遍历</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">     Map.Entry&lt;Integer, String&gt; temp = iter.next();</span><br><span class="line">     System.out.println(temp.getKey() + “--“ + temp.getValue()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>ps: 两种方法都使用了迭代器，for循环的初始化条件总是为初始化一个Iterator，利用Iterator的hasNext()方法判断是否遍历结束，再利用next()方法获取下一个对象。</p>
 <hr>
 <h3 id="二、两种方法性能对比"><a href="#二、两种方法性能对比" class="headerlink" title="二、两种方法性能对比"></a>二、两种方法性能对比</h3><h5 id="测试代码如下："><a href="#测试代码如下：" class="headerlink" title="测试代码如下："></a>测试代码如下：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; keySetMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        HashMap&lt;Integer, String&gt; entrySetMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++) &#123;</span><br><span class="line">            keySetMap.put(i, <span class="string">"a"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++) &#123;</span><br><span class="line">            entrySetMap.put(i, <span class="string">"a"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//第一种遍历Map的方式</span></span><br><span class="line">        <span class="keyword">long</span> startTime1 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator();iter.hasNext();) &#123;</span><br><span class="line"></span><br><span class="line">            Integer key = iter.next();</span><br><span class="line">            System.out.print(key + <span class="string">"----"</span> + keySetMap.get(key) + <span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTime1 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"++++++++++++++++++++++++++++++++++"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//第二种遍历Map的方式</span></span><br><span class="line">        <span class="keyword">long</span> startTime2 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Iterator&lt;Map.Entry&lt;Integer,String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line"></span><br><span class="line">            Map.Entry&lt;Integer,String&gt; temp = iter.next();</span><br><span class="line">            System.out.print(temp.getKey() + <span class="string">"--"</span> + temp.getValue() + <span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTime2 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(<span class="string">"第一种遍历耗时："</span> + (endTime1 - startTime1) + <span class="string">"ms"</span>);</span><br><span class="line">        System.out.println(<span class="string">"第二种遍历耗时："</span> + (endTime2 - startTime2) + <span class="string">"ms"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//test2.jpg" alt="test2"><br><img src="/.com//test1.jpg" alt="test1"></p>
+<p>在上述程序中，我们创建了包含5000个对象的Set容器。对容器分别用KeySet()和entrySet()进行遍历。观察遍历运行结果，进行比较。</p>
+<p>观察第一遍程序运行结果：<img src="/images/Java%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/test2.jpg" alt="test2"></p>
+<p>观察第二遍程序运行结果：<img src="/images/Java%E9%81%8D%E5%8E%86Map%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/test1.jpg" alt="test1"></p>
+<p>可以看到，entrySet()比KeySet()的运行时间少很多，多次运行程序，总是如此(如上图，只截取了两次)。</p>
+<h5 id="为什么两种方法的性能差异这么大呢？"><a href="#为什么两种方法的性能差异这么大呢？" class="headerlink" title="为什么两种方法的性能差异这么大呢？"></a>为什么两种方法的性能差异这么大呢？</h5><p>再次观察两种遍历方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Iterator&lt;Integer&gt; iter = keySetMap.keySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">     Integer key = iter.next();</span><br><span class="line">     System.out.println(key + “----“ + keySetMap.get(key)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iter = entrySetMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">     Map.Entry&lt;Integer, String&gt; temp = iter.next();</span><br><span class="line">     System.out.println(temp.getKey() + “--“ + temp.getValue()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>可以看到，两种方法都是先通过迭代器遍历Map，此时，二者的性能应该是相同的。
+而差距体现在打印时： 
+1. keySet()是通过获取到的key再次去Map中遍历寻找相对应的value(相当于遍历了两次)。              
+2. 而entrySet中直接通过getKey()和getValue()获取key和value(相当于遍历了一次)。</code></pre>
     </div>
 
     
@@ -544,12 +556,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
   <div class="powered-by">
  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
