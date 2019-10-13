@@ -56,17 +56,34 @@
   };
 </script>
 
-  <meta name="description" content="Stay Hungry, Stay Foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RubyRoad">
-<meta property="og:url" content="http://yoursite.com/tags/Map/index.html">
+  <meta name="description" content="在复习数据结构时，觉得有必要将这个内容记录下来，也查了一些资料、博客，做一下总结。在下节说AVL树之前，我们先说一下二分查找树（BST）。二叉搜索树（二叉查找树）特点如下：123若它的左子树不为空，则左子树上所有的节点值都小于它的根节点值。若它的右子树不为空，则右子树上所有的节点值都大于它的根节点值。它的左右子树也分别可以充当为二叉查找树。">
+<meta name="keywords" content="Binary Search Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构之二叉查找树BST">
+<meta property="og:url" content="http://yoursite.com/2019/10/13/数据结构之二叉查找树/index.html">
 <meta property="og:site_name" content="RubyRoad">
-<meta property="og:description" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="在复习数据结构时，觉得有必要将这个内容记录下来，也查了一些资料、博客，做一下总结。在下节说AVL树之前，我们先说一下二分查找树（BST）。二叉搜索树（二叉查找树）特点如下：123若它的左子树不为空，则左子树上所有的节点值都小于它的根节点值。若它的右子树不为空，则右子树上所有的节点值都大于它的根节点值。它的左右子树也分别可以充当为二叉查找树。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bst.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp3.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp4.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/badbst.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/badbst1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstdel.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del3.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del4.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del5.png">
+<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del6.png">
+<meta property="og:updated_time" content="2019-10-13T07:51:01.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RubyRoad">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish">
-  <link rel="canonical" href="http://yoursite.com/tags/Map/">
+<meta name="twitter:title" content="数据结构之二叉查找树BST">
+<meta name="twitter:description" content="在复习数据结构时，觉得有必要将这个内容记录下来，也查了一些资料、博客，做一下总结。在下节说AVL树之前，我们先说一下二分查找树（BST）。二叉搜索树（二叉查找树）特点如下：123若它的左子树不为空，则左子树上所有的节点值都小于它的根节点值。若它的右子树不为空，则右子树上所有的节点值都大于它的根节点值。它的左右子树也分别可以充当为二叉查找树。">
+<meta name="twitter:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bst.png">
+  <link rel="canonical" href="http://yoursite.com/2019/10/13/数据结构之二叉查找树/">
 
 
 <script id="page-configurations">
@@ -74,13 +91,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: Map | RubyRoad</title>
+  <title>数据结构之二叉查找树BST | RubyRoad</title>
   
 
 
@@ -258,91 +275,237 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Map<small>标签</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/数据结构之二叉查找树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RubyZhang">
+      <meta itemprop="description" content="Stay Hungry, Stay Foolish">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RubyRoad">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">数据结构之二叉查找树BST
+
+          
         </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-12 22:35:18" itemprop="dateCreated datePublished" datetime="2019-10-12T22:35:18Z">2019-10-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-13 07:51:01" itemprop="dateModified" datetime="2019-10-13T07:51:01Z">2019-10-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/10/13/数据结构之二叉查找树/" class="post-meta-item leancloud_visitors" data-flag-title="数据结构之二叉查找树BST" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在复习数据结构时，觉得有必要将这个内容记录下来，也查了一些资料、博客，做一下总结。<br>在下节说AVL树之前，我们先说一下二分查找树（BST）。</p><h2 id="二叉搜索树（二叉查找树）"><a href="#二叉搜索树（二叉查找树）" class="headerlink" title="二叉搜索树（二叉查找树）"></a>二叉搜索树（二叉查找树）</h2><h4 id="特点如下："><a href="#特点如下：" class="headerlink" title="特点如下："></a>特点如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">若它的左子树不为空，则左子树上所有的节点值都小于它的根节点值。</span><br><span class="line">若它的右子树不为空，则右子树上所有的节点值都大于它的根节点值。</span><br><span class="line">它的左右子树也分别可以充当为二叉查找树。</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<p>例如：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bst.png" alt></p>
+<hr>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>可以让我们快速找到想要找到的值。</p>
+<p>例如，我们想找到11这个数。根据二叉查找树的特性，我们查找的过程如下：</p>
+<ol>
+<li><p>和根节点8比较<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp1.png" alt></p>
+</li>
+<li><p>因为11&gt;8， 所以11只会在节点8的右子树中，我们查看右孩子10<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp2.png" alt></p>
+</li>
+<li><p>因为11&gt;10，继续查看10的右孩子13<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp3.png" alt></p>
+</li>
+<li><p>因为11&lt;13，所以11只会在13的左子树中，查看左孩子11<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstcomp4.png" alt></p>
+</li>
+<li><p>我们发现11正好是想要查找的值，于是结束查找。</p>
+</li>
+</ol>
+<p>二叉查找树的这种查找正是二分查找的思想，我们可以很快的找到目的节点，最大查找次数等于树的高度。</p>
+<p>插入的时候，也是通过一层一层，找到适合自己的位置插入。</p>
+<hr>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>可能会出现一种一边倒的极端情况。</p>
+<p>例如，给定一颗初始二叉查找树：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/badbst.png" alt></p>
+<p>接着，我们陆续插入3、2、1、0<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/badbst1.png" alt></p>
+<p>我们可以明显的看到节点倾向一边。这种形态的二叉查找树在查找性能上，就大打折扣，几乎变成线性。</p>
+<hr>
+<h4 id="节点删除："><a href="#节点删除：" class="headerlink" title="节点删除："></a>节点删除：</h4><p>删除节点，可能会存在三种情况，这三种情况分别如下：</p>
+<ol>
+<li>没有左右子节点，可以直接删除</li>
+<li>存在左节点或右节点，删除后需要对子节点进行移动</li>
+<li>同时存在左节点和右节点，不能简单的删除，但是可以通过和后继节点交换后转换为前两种情况</li>
+</ol>
+<p>我们将使用图进行解释，初始状态如下图。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/bstdel.png" alt></p>
+<p><code>我们会按照上面所述三种情况来解释。</code></p>
+<h5 id="1-没有左右子节点"><a href="#1-没有左右子节点" class="headerlink" title="1. 没有左右子节点"></a>1. 没有左右子节点</h5><p>在图中，符合这种状况的节点有25,42,55,80,95， 我们随便拿一个节点95来演示删除该节点：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del1.png" alt><br>删除后，如下图：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del2.png" alt><br>这种情况是最简单的，只需要删除该节点以及该节点和父节点的关系即可。</p>
+<h5 id="2-存在左节点或者右节点时"><a href="#2-存在左节点或者右节点时" class="headerlink" title="2. 存在左节点或者右节点时"></a>2. 存在左节点或者右节点时</h5><p>在图中，符合这个情况的节点有45,75两个节点，我们拿75来演示：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del3.png" alt><br>删除后，如下图：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del4.png" alt><br>这种情况，需要断两个关系，然后建立其父节点与子节点的关系。</p>
+<h4 id="3-同时存在左右节点"><a href="#3-同时存在左右节点" class="headerlink" title="3. 同时存在左右节点"></a>3. 同时存在左右节点</h4><p>在图中，满足这个情况的节点有60,40,90,50这4个节点，我们以40为例：<br>当二叉查找树以中根序遍历时，遍历的结果是从小到大排列的顺序，如下图所示：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del5.png" alt><br>当我们删除40节点的时候，整个中根序遍历的结果中，从42开始都往前移动了一位。42是40的后继节点，也就是比40大的节点中最小的节点。当某个节点存在右节点时，后继节点就是右节点中的最小值，<code>左侧节点总比右侧节点和父节点小，所以后继节点一定没有左节点。后继节点还有一个特点，就是他比40的左节点大，比40所有的右节点都小。</code> 因此，删除40的时候，可以直接将后继节点42的值赋给40节点，然后删除后继节点42。由于后继节点最多只有一个子节点，因此删除后继节点又变成了前两种情况。图示如下：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/del6.png" alt></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>继续努力哦！走一个.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="RubyZhang 微信支付">
+        <p>微信支付</p>
       </div>
+
+  </div>
+</div>
 
       
 
-  
-  
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Binary-Search-Tree/" rel="tag"># Binary Search Tree</a>
+            
+          </div>
+        
 
-  
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/16/Java遍历Map容器的两种方法/" rel="next" title="Java遍历Map容器的两种方法">
+                  <i class="fa fa-chevron-left"></i> Java遍历Map容器的两种方法
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/13/AVL/" rel="prev" title="数据结构之AVL树">
+                  数据结构之AVL树 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/16/Java遍历Map容器的两种方法/" itemprop="url">
-            <span itemprop="name">Java遍历Map容器的两种方法</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-16T14:06:32Z"
-              content="2019-09-16">
-          09-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    </div>
   </div>
   
   
   
 
-  
+  </article>
 
+  </div>
 
 
           </div>
           
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQzMi8yMjk0Mw=="></div>
+  </div>
+  
+  
 
         </div>
           
@@ -670,6 +833,19 @@
 
   
 
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
 
 
   <!-- 页面点击小红心 -->

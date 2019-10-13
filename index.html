@@ -266,6 +266,276 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/AVL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RubyZhang">
+      <meta itemprop="description" content="Stay Hungry, Stay Foolish">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RubyRoad">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/13/AVL/" class="post-title-link" itemprop="url">数据结构之AVL树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-13 13:33:36 / 修改时间：09:55:35" itemprop="dateCreated datePublished" datetime="2019-10-13T13:33:36Z">2019-10-13</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/10/13/AVL/" class="post-meta-item leancloud_visitors" data-flag-title="数据结构之AVL树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>上节了解了二叉查找树，我们知道，二叉查找树的缺点是会出现一边倒（“瘸腿”）的情况。<br><img src="/images/数据结构之AVL树/badbst.png" width="50%" height="50%"><br>这种情况让二叉查找树的查找效率大打折扣，于是出现了自平衡二叉查找树（AVL树），它能通过一定机制保证二叉查找树的平衡。</p><h4 id="AVL树的特点"><a href="#AVL树的特点" class="headerlink" title="AVL树的特点"></a>AVL树的特点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">具有二叉查找树的全部特性</span><br><span class="line">每个节点的左子树和右子树的高度差至多等于1</span><br></pre></td></tr></table></figure><p><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl1.png" alt><br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl2.png" alt><br>图一、图二为两颗二叉查找树（节点旁的红色数字是当前节点的高度），图一的BST符合AVL的特性（节点8的左孩子高度2与右孩子高度0相差1），所以是一颗AVL树；而图二的树不符合AVL树的特性（节点8的左孩子高度2与右孩子高度0相差2），要让它成为一颗AVL树，就需要对其进行变化。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/10/13/AVL/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/数据结构之二叉查找树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RubyZhang">
+      <meta itemprop="description" content="Stay Hungry, Stay Foolish">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RubyRoad">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/13/数据结构之二叉查找树/" class="post-title-link" itemprop="url">数据结构之二叉查找树BST</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-12 22:35:18" itemprop="dateCreated datePublished" datetime="2019-10-12T22:35:18Z">2019-10-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-13 07:51:01" itemprop="dateModified" datetime="2019-10-13T07:51:01Z">2019-10-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/10/13/数据结构之二叉查找树/" class="post-meta-item leancloud_visitors" data-flag-title="数据结构之二叉查找树BST" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在复习数据结构时，觉得有必要将这个内容记录下来，也查了一些资料、博客，做一下总结。<br>在下节说AVL树之前，我们先说一下二分查找树（BST）。</p><h2 id="二叉搜索树（二叉查找树）"><a href="#二叉搜索树（二叉查找树）" class="headerlink" title="二叉搜索树（二叉查找树）"></a>二叉搜索树（二叉查找树）</h2><h4 id="特点如下："><a href="#特点如下：" class="headerlink" title="特点如下："></a>特点如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">若它的左子树不为空，则左子树上所有的节点值都小于它的根节点值。</span><br><span class="line">若它的右子树不为空，则右子树上所有的节点值都大于它的根节点值。</span><br><span class="line">它的左右子树也分别可以充当为二叉查找树。</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/10/13/数据结构之二叉查找树/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/Java遍历Map容器的两种方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,7 +714,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -457,7 +727,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -470,7 +740,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -520,7 +790,7 @@
         
           <div id="myCanvasContainer" class="widget tagcloud">
             <canvas width="250" height="250" id="resCanvas" style="width=100%">
-              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collection/">Collection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Iterator/">Iterator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/">Map</a><span class="tag-list-count">1</span></li></ul>
+              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search-Tree/">Binary Search Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collection/">Collection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Iterator/">Iterator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/">Map</a><span class="tag-list-count">1</span></li></ul>
             </canvas>
           </div>
         </div>
@@ -552,12 +822,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">6k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
 </div>
 
         
@@ -721,6 +991,10 @@
   
 
   
+    
+      
+    
+      
     
       
     
