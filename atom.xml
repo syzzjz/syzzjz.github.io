@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-16T07:34:48.580Z</updated>
+  <updated>2019-10-19T13:02:06.212Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM类加载机制</title>
+    <link href="http://yoursite.com/2019/10/19/JVMload/"/>
+    <id>http://yoursite.com/2019/10/19/JVMload/</id>
+    <published>2019-10-19T15:32:18.000Z</published>
+    <updated>2019-10-19T13:02:06.212Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="类加载的机制"><a href="#类加载的机制" class="headerlink" title="类加载的机制"></a>类加载的机制</h3><p>JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。</p><ol><li><p>加载</p><ul><li>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）<br><img src="/images/JVMload/load.png" alt></li></ul></li><li><p>链接：将Java类的二进制代码合并到JVM的运行状态中的过程</p><ul><li>验证：确保加载的类信息符合JVM规范，没有安全方面的问题</li><li>准备：正式为类变量（static变量）分配内存并设置类变量初始值的阶段，这些内存都将在方法区中进行分配</li><li>解析：虚拟机常量池内的符号引用替换为直接引用的过程</li></ul></li><li><p>初始化：为类的静态变量赋予正确的初始值</p><ul><li>初始化阶段是执行类构造器<clinit>()方法的过程。类构造器<clinit>()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块(static块)中的语句合并产生的。</clinit></clinit></li><li>当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。</li><li>虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确加锁和同步。</clinit></li><li>当访问一个Java类的静态域时，只有真正声明这个域的类才会被初始化。</li></ul></li></ol><a id="more"></a><hr><h4 id="测试代码："><a href="#测试代码：" class="headerlink" title="测试代码："></a>测试代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Demo01的静态初始化块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Demo01的main方法！"</span>);</span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        System.out.println(a.width);</span><br><span class="line">        A a2 = <span class="keyword">new</span> A();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化B"</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">A_Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> width=<span class="number">300</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX=<span class="number">100</span>;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化类A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"创建A类的对象"</span>);</span><br><span class="line">        <span class="keyword">this</span>.width = <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A_Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化A_Father"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/images/JVMload/result.png" alt><br>可以看到，在没有new A之前，都没有对A类进行加载，而是直接加载初始化main方法所在的类，并直接调用main方法。创建a2对象时，没有再加载A类，说明同一个类只会加载一次（一定时间内）。</p><hr><h3 id="类加载过程中的细节："><a href="#类加载过程中的细节：" class="headerlink" title="类加载过程中的细节："></a>类加载过程中的细节：</h3><h4 id="类的主动引用"><a href="#类的主动引用" class="headerlink" title="类的主动引用"></a>类的主动引用</h4><ol><li>new一个类的对象</li><li>调用类的静态成员（除了final常量）和静态方法</li><li>使用java.lang.reflect包的方法对类进行反射调用</li><li>当虚拟机启动，java Hello，则一定会初始化Hello类，说白了就是先启动main方法所在的类</li><li>当初始化一个类，如果其父类没有被初始化，则先会初始化他的父类</li></ol><h4 id="类的被动调用（不会发生类的初始化）"><a href="#类的被动调用（不会发生类的初始化）" class="headerlink" title="类的被动调用（不会发生类的初始化）"></a>类的被动调用（不会发生类的初始化）</h4><ol><li><p>当访问一个静态域时，只有真正声明这个域的类才会被初始化</p><ul><li>通过子类引用父类的静态变量，不会导致子类初始化</li></ul></li><li><p>通过数组定义类引用，不会触发此类的初始化</p></li><li><p>引用常量不会触发此类的初始化（常量在编译阶段就存入调用类的常量池中了）</p></li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主动引用</span></span><br><span class="line"><span class="keyword">new</span> A();</span><br><span class="line">System.out.println(A.width);</span><br><span class="line">Class.forName(<span class="string">"practice.A"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//被动引用</span></span><br><span class="line">System.out.println(B.width);</span><br><span class="line">A[] as = <span class="keyword">new</span> A[<span class="number">10</span>];</span><br><span class="line">System.out.println(A.MAX);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;类加载的机制&quot;&gt;&lt;a href=&quot;#类加载的机制&quot; class=&quot;headerlink&quot; title=&quot;类加载的机制&quot;&gt;&lt;/a&gt;类加载的机制&lt;/h3&gt;&lt;p&gt;JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;加载&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）&lt;br&gt;&lt;img src=&quot;/images/JVMload/load.png&quot; alt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;链接：将Java类的二进制代码合并到JVM的运行状态中的过程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证：确保加载的类信息符合JVM规范，没有安全方面的问题&lt;/li&gt;
+&lt;li&gt;准备：正式为类变量（static变量）分配内存并设置类变量初始值的阶段，这些内存都将在方法区中进行分配&lt;/li&gt;
+&lt;li&gt;解析：虚拟机常量池内的符号引用替换为直接引用的过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;初始化：为类的静态变量赋予正确的初始值&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化阶段是执行类构造器&lt;clinit&gt;()方法的过程。类构造器&lt;clinit&gt;()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块(static块)中的语句合并产生的。&lt;/clinit&gt;&lt;/clinit&gt;&lt;/li&gt;
+&lt;li&gt;当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。&lt;/li&gt;
+&lt;li&gt;虚拟机会保证一个类的&lt;clinit&gt;()方法在多线程环境中被正确加锁和同步。&lt;/clinit&gt;&lt;/li&gt;
+&lt;li&gt;当访问一个Java类的静态域时，只有真正声明这个域的类才会被初始化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/Java/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>反射机制与Class类</title>

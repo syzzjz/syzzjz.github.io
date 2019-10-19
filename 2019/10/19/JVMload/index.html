@@ -56,17 +56,22 @@
   };
 </script>
 
-  <meta name="description" content="Stay Hungry, Stay Foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RubyRoad">
-<meta property="og:url" content="http://yoursite.com/tags/Binary-Search-Tree/index.html">
+  <meta name="description" content="类加载的机制JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。 加载  将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）   链接：将Java类的二进制代码合并到JVM的运行状态">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM类加载机制">
+<meta property="og:url" content="http://yoursite.com/2019/10/19/JVMload/index.html">
 <meta property="og:site_name" content="RubyRoad">
-<meta property="og:description" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="类加载的机制JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。 加载  将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）   链接：将Java类的二进制代码合并到JVM的运行状态">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/JVMload/load.png">
+<meta property="og:image" content="http://yoursite.com/images/JVMload/result.png">
+<meta property="og:updated_time" content="2019-10-19T13:02:06.212Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RubyRoad">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish">
-  <link rel="canonical" href="http://yoursite.com/tags/Binary-Search-Tree/">
+<meta name="twitter:title" content="JVM类加载机制">
+<meta name="twitter:description" content="类加载的机制JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。 加载  将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）   链接：将Java类的二进制代码合并到JVM的运行状态">
+<meta name="twitter:image" content="http://yoursite.com/images/JVMload/load.png">
+  <link rel="canonical" href="http://yoursite.com/2019/10/19/JVMload/">
 
 
 <script id="page-configurations">
@@ -74,13 +79,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: Binary Search Tree | RubyRoad</title>
+  <title>JVM类加载机制 | RubyRoad</title>
   
 
 
@@ -258,91 +263,235 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Binary Search Tree<small>标签</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/JVMload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RubyZhang">
+      <meta itemprop="description" content="Stay Hungry, Stay Foolish">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RubyRoad">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JVM类加载机制
+
+          
         </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-19 15:32:18 / 修改时间：13:02:06" itemprop="dateCreated datePublished" datetime="2019-10-19T15:32:18Z">2019-10-19</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/10/19/JVMload/" class="post-meta-item leancloud_visitors" data-flag-title="JVM类加载机制" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.9k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>2 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="类加载的机制"><a href="#类加载的机制" class="headerlink" title="类加载的机制"></a>类加载的机制</h3><p>JVM把class文件加载到内存，并对数据进行校验、解析和初始化，最终形成JVM可以直接使用的Java类型的过程。</p><ol>
+<li><p>加载</p>
+<ul>
+<li>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口。（这个过程需要类加载器参与）<br><img src="/images/JVMload/load.png" alt></li>
+</ul>
+</li>
+<li><p>链接：将Java类的二进制代码合并到JVM的运行状态中的过程</p>
+<ul>
+<li>验证：确保加载的类信息符合JVM规范，没有安全方面的问题</li>
+<li>准备：正式为类变量（static变量）分配内存并设置类变量初始值的阶段，这些内存都将在方法区中进行分配</li>
+<li>解析：虚拟机常量池内的符号引用替换为直接引用的过程</li>
+</ul>
+</li>
+<li><p>初始化：为类的静态变量赋予正确的初始值</p>
+<ul>
+<li>初始化阶段是执行类构造器<clinit>()方法的过程。类构造器<clinit>()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块(static块)中的语句合并产生的。</clinit></clinit></li>
+<li>当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。</li>
+<li>虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确加锁和同步。</clinit></li>
+<li>当访问一个Java类的静态域时，只有真正声明这个域的类才会被初始化。</li>
+</ul>
+</li>
+</ol><a id="more"></a>
+
+<hr>
+<h4 id="测试代码："><a href="#测试代码：" class="headerlink" title="测试代码："></a>测试代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Demo01的静态初始化块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Demo01的main方法！"</span>);</span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        System.out.println(a.width);</span><br><span class="line">        A a2 = <span class="keyword">new</span> A();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化B"</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">A_Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> width=<span class="number">300</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX=<span class="number">100</span>;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化类A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"创建A类的对象"</span>);</span><br><span class="line">        <span class="keyword">this</span>.width = <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A_Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态初始化A_Father"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/JVMload/result.png" alt><br>可以看到，在没有new A之前，都没有对A类进行加载，而是直接加载初始化main方法所在的类，并直接调用main方法。创建a2对象时，没有再加载A类，说明同一个类只会加载一次（一定时间内）。</p>
+<hr>
+<h3 id="类加载过程中的细节："><a href="#类加载过程中的细节：" class="headerlink" title="类加载过程中的细节："></a>类加载过程中的细节：</h3><h4 id="类的主动引用"><a href="#类的主动引用" class="headerlink" title="类的主动引用"></a>类的主动引用</h4><ol>
+<li>new一个类的对象</li>
+<li>调用类的静态成员（除了final常量）和静态方法</li>
+<li>使用java.lang.reflect包的方法对类进行反射调用</li>
+<li>当虚拟机启动，java Hello，则一定会初始化Hello类，说白了就是先启动main方法所在的类</li>
+<li>当初始化一个类，如果其父类没有被初始化，则先会初始化他的父类</li>
+</ol>
+<h4 id="类的被动调用（不会发生类的初始化）"><a href="#类的被动调用（不会发生类的初始化）" class="headerlink" title="类的被动调用（不会发生类的初始化）"></a>类的被动调用（不会发生类的初始化）</h4><ol>
+<li><p>当访问一个静态域时，只有真正声明这个域的类才会被初始化</p>
+<ul>
+<li>通过子类引用父类的静态变量，不会导致子类初始化</li>
+</ul>
+</li>
+<li><p>通过数组定义类引用，不会触发此类的初始化</p>
+</li>
+<li><p>引用常量不会触发此类的初始化（常量在编译阶段就存入调用类的常量池中了）</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主动引用</span></span><br><span class="line"><span class="keyword">new</span> A();</span><br><span class="line">System.out.println(A.width);</span><br><span class="line">Class.forName(<span class="string">"practice.A"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//被动引用</span></span><br><span class="line">System.out.println(B.width);</span><br><span class="line">A[] as = <span class="keyword">new</span> A[<span class="number">10</span>];</span><br><span class="line">System.out.println(A.MAX);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>继续努力哦！走一个.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="RubyZhang 微信支付">
+        <p>微信支付</p>
       </div>
+
+  </div>
+</div>
 
       
 
-  
-  
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+            
+          </div>
+        
 
-  
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/16/Reflection/" rel="next" title="反射机制与Class类">
+                  <i class="fa fa-chevron-left"></i> 反射机制与Class类
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/13/数据结构之二叉查找树/" itemprop="url">
-            <span itemprop="name">数据结构之二叉查找树BST</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-12T22:35:18Z"
-              content="2019-10-12">
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    </div>
   </div>
   
   
   
 
-  
+  </article>
 
+  </div>
 
 
           </div>
           
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQzMi8yMjk0Mw=="></div>
+  </div>
+  
+  
 
         </div>
           
@@ -670,6 +819,19 @@
 
   
 
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
 
 
   <!-- 页面点击小红心 -->
