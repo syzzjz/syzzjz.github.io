@@ -56,43 +56,25 @@
   };
 </script>
 
-  <meta name="description" content="上节了解了二叉查找树，我们知道，二叉查找树的缺点是会出现一边倒（“瘸腿”）的情况。这种情况让二叉查找树的查找效率大打折扣，于是出现了自平衡二叉查找树（AVL树），它能通过一定机制保证二叉查找树的平衡。AVL树的特点12具有二叉查找树的全部特性每个节点的左子树和右子树的高度差至多等于1图一、图二为两颗二叉查找树（节点旁的红色数字是当前节点的高度），图一的BST符合AVL的特性（节点8的左孩子高度2与">
-<meta name="keywords" content="AVL Tree">
+  <meta name="description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
+<meta name="keywords" content="ethereum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构之AVL树">
-<meta property="og:url" content="http://yoursite.com/2019/10/13/AVL/index.html">
+<meta property="og:title" content="Ethereum私有链部署">
+<meta property="og:url" content="http://yoursite.com/2020/06/08/Ethereum私有链部署/index.html">
 <meta property="og:site_name" content="RubyRoad">
-<meta property="og:description" content="上节了解了二叉查找树，我们知道，二叉查找树的缺点是会出现一边倒（“瘸腿”）的情况。这种情况让二叉查找树的查找效率大打折扣，于是出现了自平衡二叉查找树（AVL树），它能通过一定机制保证二叉查找树的平衡。AVL树的特点12具有二叉查找树的全部特性每个节点的左子树和右子树的高度差至多等于1图一、图二为两颗二叉查找树（节点旁的红色数字是当前节点的高度），图一的BST符合AVL的特性（节点8的左孩子高度2与">
+<meta property="og:description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/数据结构之AVL树/badbst.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl1.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx1.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx.gif">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx3.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx4.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx1.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx.gif">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx3.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx4.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz1.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz3.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz4.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz5.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy1.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy3.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy4.png">
-<meta property="og:image" content="http://yoursite.com/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy5.png">
-<meta property="og:updated_time" content="2019-10-13T09:55:35.118Z">
+<meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png">
+<meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/console.png">
+<meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D1.png">
+<meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D2.png">
+<meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/transaction.png">
+<meta property="og:updated_time" content="2020-06-07T14:49:32.759Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构之AVL树">
-<meta name="twitter:description" content="上节了解了二叉查找树，我们知道，二叉查找树的缺点是会出现一边倒（“瘸腿”）的情况。这种情况让二叉查找树的查找效率大打折扣，于是出现了自平衡二叉查找树（AVL树），它能通过一定机制保证二叉查找树的平衡。AVL树的特点12具有二叉查找树的全部特性每个节点的左子树和右子树的高度差至多等于1图一、图二为两颗二叉查找树（节点旁的红色数字是当前节点的高度），图一的BST符合AVL的特性（节点8的左孩子高度2与">
-<meta name="twitter:image" content="http://yoursite.com/images/数据结构之AVL树/badbst.png">
-  <link rel="canonical" href="http://yoursite.com/2019/10/13/AVL/">
+<meta name="twitter:title" content="Ethereum私有链部署">
+<meta name="twitter:description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
+<meta name="twitter:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png">
+  <link rel="canonical" href="http://yoursite.com/2020/06/08/Ethereum私有链部署/">
 
 
 <script id="page-configurations">
@@ -106,7 +88,7 @@
   };
 </script>
 
-  <title>数据结构之AVL树 | RubyRoad</title>
+  <title>Ethereum私有链部署 | RubyRoad</title>
   
 
 
@@ -293,7 +275,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/AVL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/08/Ethereum私有链部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RubyZhang">
@@ -305,7 +287,7 @@
       <meta itemprop="name" content="RubyRoad">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">数据结构之AVL树
+        <h1 class="post-title" itemprop="name headline">Ethereum私有链部署
 
           
         </h1>
@@ -321,7 +303,7 @@
                 
               
 
-              <time title="创建时间：2019-10-13 13:33:36 / 修改时间：09:55:35" itemprop="dateCreated datePublished" datetime="2019-10-13T13:33:36Z">2019-10-13</time>
+              <time title="创建时间：2020-06-07 21:00:05 / 修改时间：14:49:32" itemprop="dateCreated datePublished" datetime="2020-06-07T21:00:05Z">2020-06-07</time>
             </span>
           
             
@@ -334,14 +316,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blockchain/" itemprop="url" rel="index"><span itemprop="name">Blockchain</span></a></span>
 
                 
                 
@@ -350,7 +325,7 @@
           
 
           
-            <span id="/2019/10/13/AVL/" class="post-meta-item leancloud_visitors" data-flag-title="数据结构之AVL树" title="阅读次数">
+            <span id="/2020/06/08/Ethereum私有链部署/" class="post-meta-item leancloud_visitors" data-flag-title="Ethereum私有链部署" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -366,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.2k</span>
+              <span>3.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -376,7 +351,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -389,30 +364,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>上节了解了二叉查找树，我们知道，二叉查找树的缺点是会出现一边倒（“瘸腿”）的情况。<br><img src="/images/数据结构之AVL树/badbst.png" width="50%" height="50%"><br>这种情况让二叉查找树的查找效率大打折扣，于是出现了自平衡二叉查找树（AVL树），它能通过一定机制保证二叉查找树的平衡。</p><h4 id="AVL树的特点"><a href="#AVL树的特点" class="headerlink" title="AVL树的特点"></a>AVL树的特点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">具有二叉查找树的全部特性</span><br><span class="line">每个节点的左子树和右子树的高度差至多等于1</span><br></pre></td></tr></table></figure><p><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl1.png" alt><br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/avl2.png" alt><br>图一、图二为两颗二叉查找树（节点旁的红色数字是当前节点的高度），图一的BST符合AVL的特性（节点8的左孩子高度2与右孩子高度0相差1），所以是一颗AVL树；而图二的树不符合AVL树的特性（节点8的左孩子高度2与右孩子高度0相差2），要让它成为一颗AVL树，就需要对其进行变化。</p><a id="more"></a>
+        <h3 id="Ethereum私有链的部署"><a href="#Ethereum私有链的部署" class="headerlink" title="Ethereum私有链的部署"></a>Ethereum私有链的部署</h3><p> 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。</p><h4 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h4><p>本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。</p><a id="more"></a>
 
+<h5 id="下载客户端"><a href="#下载客户端" class="headerlink" title="下载客户端"></a>下载客户端</h5><p>首先，下载geth, geth全称Go-ethereum，是一个以太坊客户端，用go语言编写，属于最常用的客户端，当然还有其他语言写的客户端。访问<a href="https://geth.ethereum.org/downloads/" target="_blank" rel="noopener">https://geth.ethereum.org/downloads/</a>，看到如下图：<br><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png" alt></p>
+<h5 id="配置语言环境"><a href="#配置语言环境" class="headerlink" title="配置语言环境"></a>配置语言环境</h5><p>下载<a href="https://golang.org/dl/" target="_blank" rel="noopener">go语言</a>，下载完成后配置环境变量。</p>
+<h5 id="下载以太坊"><a href="#下载以太坊" class="headerlink" title="下载以太坊"></a>下载以太坊</h5><p>创建一个新目录Ethereum，然后通过cd进入此目录，之后依次执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ethereum/go-ethereum</span><br><span class="line">cd go-ethereum</span><br><span class="line">go get -u -v golang.org/x/net/context</span><br><span class="line">go install -v ./cmd/...</span><br></pre></td></tr></table></figure>
 
+<p><code>PS: 如果遇到clone不下来的情况，可以去[码云](https://gitee.com/)注册个账号，然后先加载到码云仓库里，然后通过码云仓库下载，速度很快</code><br><code>PPS：当golang.org/x/net/context失败时，不要急，是因为qiang的问题，可以通过代理服务帮助我们下载，只需下面一行代码，需要注意的是该方法只能支持 Go version &gt;= 1.11</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export GOPROXY = https://goproxy.io</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h4 id="AVL树的旋转"><a href="#AVL树的旋转" class="headerlink" title="AVL树的旋转"></a>AVL树的旋转</h4><p>旋转总共有四种形式：右旋、左旋、左右双旋、右左双旋</p>
-<hr>
-<h5 id="为什么要旋转"><a href="#为什么要旋转" class="headerlink" title="为什么要旋转"></a>为什么要旋转</h5><p>不管什么形式的旋转，旋转的目的是为了降低树的高度，使其平衡。</p>
-<hr>
-<h5 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h5><p>假如我们在节点插入的时候，出现了节点都倾向于左边的情况，例如：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx1.png" alt><br>我们把这种倾向于左边的情况称为<strong>左-左型</strong>。这个时候，我们可以对节点8进行右旋操作，使它恢复平衡。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx2.png" alt><br><code>即：以旋转节点为轴，顺时针旋转，使得自己被自己的左孩子取代，自己成为左孩子的右孩子，原来左孩子的右孩子成为自己的左孩子。</code><br>看一个动图：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx.gif" alt><br>再看一个例子：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx3.png" alt><br>节点5和10的高度差大于1，由于5的左孩子高度较高，所以此种情况是<strong>左-左型</strong>，对节点8进行右旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yx4.png" alt><br><strong>注意：节点6的变化！</strong></p>
-<hr>
-<h5 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h5><p>假如我们在节点插入的时候，出现了节点都倾向于右边的情况，例如：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx1.png" alt><br>这种倾向被我们称为<strong>右-右型</strong>，我们对节点10进行左旋操作。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx2.png" alt><br><code>即：以旋转节点为轴，逆时针旋转，使得自己被自己的右孩子取代，自己成为右孩子的左孩子，原来右孩子的左孩子成为自己的右孩子。</code><br>看一个动图：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx.gif" alt><br>看一个例子：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx3.png" alt><br>节点2和6的高度差大于1，由于6的右孩子高度较高，所以此种情况是<strong>右-右型</strong>，对节点4进行左旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zx4.png" alt><br><strong>注意：节点5的变化！</strong></p>
-<hr>
-<h5 id="左右双旋"><a href="#左右双旋" class="headerlink" title="左右双旋"></a>左右双旋</h5><p>如果我们在节点插入时出现这种状况，我们该怎么办呢？很显然，我们无法通过一次左旋或右旋来解决，下面来说说如何解决。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz1.png" alt><br>我们就称它为<strong>右-左型</strong>吧，处理方法是先对节点10进行右旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz2.png" alt><br>右旋后，我们发现树的结构变成了<strong>右-右型</strong>，于是我们再对节点7进行左旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz3.png" alt><br>通过两次旋转，我们发现树平衡了。<br><font color="red">注意：两次旋转节点是不一样的！！！</font><br>看一个例子：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz4.png" alt><br>节点2和6的高度差大于1，由于6的左孩子高度较高，所以此种情况是<strong>右-左型</strong>。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/yz5.png" alt><br><strong>注意：节点4的变化！</strong></p>
-<hr>
-<h5 id="右左双旋"><a href="#右左双旋" class="headerlink" title="右左双旋"></a>右左双旋</h5><p><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy1.png" alt><br>我们就称它为<strong>左-右型</strong>吧，处理方法是先对节点5进行左旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy2.png" alt><br>左旋后，我们发现树的结构变成了<strong>左-左型</strong>，于是我们再对节点8进行右旋。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy3.png" alt><br>看一个例子：<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy4.png" alt><br>节点5和10的高度差大于1，由于5的右孩子高度较高，所以此种情况是<strong>左-右型</strong>。<br><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BAVL%E6%A0%91/zy5.png" alt><br><strong>注意：节点7的变化！</strong></p>
-<hr>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在插入过程中，会出现以下四种情况破坏AVL树的特性，我们可以采取如下相应的旋转:</p>
-<ol>
-<li>左-左型：做右旋</li>
-<li>右-右型：做左旋</li>
-<li>左-右型：先做左旋，再做右旋</li>
-<li>右-左型：先做右旋，再做左旋</li>
-</ol>
+<p>至此，环境搭建完毕，开始进入测试。</p>
+<h4 id="2-开始测试"><a href="#2-开始测试" class="headerlink" title="2.开始测试"></a>2.开始测试</h4><h5 id="创建创世区块"><a href="#创建创世区块" class="headerlink" title="创建创世区块"></a>创建创世区块</h5><p>准备创世区块配置文件，要运行私有链，我们就需要定义自己的创世区块，创世区块信息写在一个json格式的文件中。首先，将下面内容保存至一个json文件，如genesis.json。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;config&quot;: &#123;</span><br><span class="line">      &quot;chainId&quot;: 15,</span><br><span class="line">      &quot;homesteadBlock&quot;: 0,</span><br><span class="line">      &quot;eip150Block&quot;: 0,</span><br><span class="line">      &quot;eip155Block&quot;: 0,</span><br><span class="line">      &quot;eip158Block&quot;: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;coinbase&quot; : &quot;0x0000000000000000000000000000000000000000&quot;,</span><br><span class="line">  &quot;difficulty&quot; : &quot;0x40000&quot;,</span><br><span class="line">  &quot;extraData&quot; : &quot;&quot;,</span><br><span class="line">  &quot;gasLimit&quot; : &quot;0xffffffff&quot;,</span><br><span class="line">  &quot;nonce&quot; : &quot;0x0000000000000042&quot;,</span><br><span class="line">  &quot;mixhash&quot; : &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,</span><br><span class="line">  &quot;parentHash&quot; : &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,</span><br><span class="line">  &quot;timestamp&quot; : &quot;0x00&quot;,</span><br><span class="line">  &quot;alloc&quot;: &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>cd进json文件所在的目录，然后执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth –datadir testNet init genesis.json</span><br></pre></td></tr></table></figure>
+
+<p>geth … init …表示区块链的初始化，-datadir 后面跟一个目录名字，这里为testNet，表示指定的数据目录存放至testNet中。</p>
+<h5 id="启动私有链节点"><a href="#启动私有链节点" class="headerlink" title="启动私有链节点"></a>启动私有链节点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --datadir testNet --dev.period 1 console 2&gt;&gt; test.log</span><br></pre></td></tr></table></figure>
+
+<p>执行这个命令后，会进入geth控制台，如下图：<br><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/console.png" alt></p>
+<p>命令参数说明：<br><strong>–dev</strong>  启用开发者模式，开发者网络会使用POA共识，默认预分配一个开发者账户并会自动开始挖矿。<br><strong>console</strong>  进入控制台<br><strong>2&gt;&gt;test.log</strong>  表示控制台日志输出到test.log文件</p>
+<p><code>PS：dev模式在版本更新之后，新增了一个参数项，在以前版本只使用-dev然后执行miner.start()就可以挖矿，但后面版本中，只有发送交易时才会挖一个块。当miner.start()之后，不管返回是不是null，先看节点高度是否增高，增高则已挖过块；反之，则不然。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--dev               Ephemeral proof-of-authority network with a pre-funded developer account, mining enabled</span><br><span class="line">--dev.period value  Block period to use in developer mode (0 = mine only if transaction pending) (default: 0)</span><br></pre></td></tr></table></figure>
+
+<p>可以另打开一个终端，实时显示日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f test.log</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用geth进行转账"><a href="#使用geth进行转账" class="headerlink" title="使用geth进行转账"></a>使用geth进行转账</h5><p>已知，当用dev命令进入终端时，会预分配一个开发者账户，这个账户余额充足，可用以下命令来进行余额的查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.getBalance(eth.accounts[0])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D1.png" alt></p>
+<p>要完成转账，需再创建一个账户(这里“123456”为账户的私钥密码)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;personal.newAccount(&quot;123456&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>创建完成后，可以查看它的余额，新账户，余额自然是0.（我这里新建的账户为第三个账户，所以为eth.accounts[2]）<br><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D2.png" alt></p>
+<p>查看当前区块链的高度，返回应该是0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.blockNumber</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>要想进行交易，需要先将转账用户解锁，需要密码时，直接敲回车。需要注意，每隔一段时间，账户会自动锁定，所以每次交易之前，都需要先进行unlock操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;personal.unlockAccount(eth.accounts[0])</span><br></pre></td></tr></table></figure>
+
+<p>发起交易</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.sendTransaction(&#123;from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(1,&quot;ether&quot;)&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>查看区块高度，此时为0，因为还没有挖矿，交易还没有被添加上去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.blockNumber</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>开始挖矿（返回为null时，可能已经挖矿结束，也可能没有挖矿）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;miner.start()</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+
+<p>查看区块高度，此时高度应该为1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.blockNumber</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>然后查看被转账用户，看看余额是否变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;eth.getBalance(eth.accounts[2])</span><br><span class="line">1000000000000000000</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/transaction.png" alt><br>交易完成！</p>
 
     </div>
 
@@ -445,7 +454,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/AVL-Tree/" rel="tag"># AVL Tree</a>
+              <a href="/tags/ethereum/" rel="tag"># ethereum</a>
             
           </div>
         
@@ -455,8 +464,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/13/数据结构之二叉查找树/" rel="next" title="数据结构之二叉查找树BST">
-                  <i class="fa fa-chevron-left"></i> 数据结构之二叉查找树BST
+                <a href="/2019/10/19/JVMload/" rel="next" title="JVM类加载机制">
+                  <i class="fa fa-chevron-left"></i> JVM类加载机制
                 </a>
               
             </div>
@@ -464,10 +473,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/16/Reflection/" rel="prev" title="反射机制与Class类">
-                  反射机制与Class类 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>

@@ -1780,7 +1780,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fabd0b;
+  background: #ff294d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
