@@ -56,23 +56,23 @@
   };
 </script>
 
-  <meta name="description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
+  <meta name="description" content="Ethereum私有链的部署 最近刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
 <meta name="keywords" content="ethereum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ethereum私有链部署">
 <meta property="og:url" content="http://yoursite.com/2020/06/08/Ethereum私有链部署/index.html">
 <meta property="og:site_name" content="RubyRoad">
-<meta property="og:description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
+<meta property="og:description" content="Ethereum私有链的部署 最近刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png">
 <meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/console.png">
 <meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D1.png">
 <meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/%E4%BD%99%E9%A2%9D2.png">
 <meta property="og:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/transaction.png">
-<meta property="og:updated_time" content="2020-06-07T14:49:32.759Z">
+<meta property="og:updated_time" content="2020-06-07T14:53:32.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ethereum私有链部署">
-<meta name="twitter:description" content="Ethereum私有链的部署 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
+<meta name="twitter:description" content="Ethereum私有链的部署 最近刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。1.环境搭建本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。">
 <meta name="twitter:image" content="http://yoursite.com/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png">
   <link rel="canonical" href="http://yoursite.com/2020/06/08/Ethereum私有链部署/">
 
@@ -303,7 +303,7 @@
                 
               
 
-              <time title="创建时间：2020-06-07 21:00:05 / 修改时间：14:49:32" itemprop="dateCreated datePublished" datetime="2020-06-07T21:00:05Z">2020-06-07</time>
+              <time title="创建时间：2020-06-07 21:00:05 / 修改时间：14:53:32" itemprop="dateCreated datePublished" datetime="2020-06-07T21:00:05Z">2020-06-07</time>
             </span>
           
             
@@ -364,7 +364,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Ethereum私有链的部署"><a href="#Ethereum私有链的部署" class="headerlink" title="Ethereum私有链的部署"></a>Ethereum私有链的部署</h3><p> 最近写完刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。</p><h4 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h4><p>本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。</p><a id="more"></a>
+        <h3 id="Ethereum私有链的部署"><a href="#Ethereum私有链的部署" class="headerlink" title="Ethereum私有链的部署"></a>Ethereum私有链的部署</h3><p> 最近刚写完毕设，对区块链有了一定的学习，学习之后，还是挺想动手体验体验（毕设只是纸上谈兵，并没有实际的操作）。于是找了很多文档，有了下面的这些东西，因为遇到很多问题，所以记录下来，便于以后自己翻阅。</p><h4 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h4><p>本人使用的是win10系统，下载了git Bash，所以命令多还是以linux shell为主。</p><a id="more"></a>
 
 <h5 id="下载客户端"><a href="#下载客户端" class="headerlink" title="下载客户端"></a>下载客户端</h5><p>首先，下载geth, geth全称Go-ethereum，是一个以太坊客户端，用go语言编写，属于最常用的客户端，当然还有其他语言写的客户端。访问<a href="https://geth.ethereum.org/downloads/" target="_blank" rel="noopener">https://geth.ethereum.org/downloads/</a>，看到如下图：<br><img src="/images/Ethereum%E7%A7%81%E6%9C%89%E9%93%BE%E9%83%A8%E7%BD%B2/geth.png" alt></p>
 <h5 id="配置语言环境"><a href="#配置语言环境" class="headerlink" title="配置语言环境"></a>配置语言环境</h5><p>下载<a href="https://golang.org/dl/" target="_blank" rel="noopener">go语言</a>，下载完成后配置环境变量。</p>
@@ -474,6 +474,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2020/09/06/xxx/" rel="prev" title="xxx">
+                  xxx <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -543,7 +547,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
