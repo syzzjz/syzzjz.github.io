@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-06T03:10:43.074Z</updated>
+  <updated>2020-12-08T14:07:31.317Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,30 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>yslw</title>
-    <link href="http://yoursite.com/2020/09/06/yslw/"/>
-    <id>http://yoursite.com/2020/09/06/yslw/</id>
-    <published>2020-09-06T11:10:43.000Z</published>
-    <updated>2020-09-06T03:10:43.074Z</updated>
+    <title>win7粘滞键漏洞利用</title>
+    <link href="http://yoursite.com/2020/12/09/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"/>
+    <id>http://yoursite.com/2020/12/09/win7粘滞键漏洞利用/</id>
+    <published>2020-12-08T20:59:39.000Z</published>
+    <updated>2020-12-08T14:07:31.317Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>部分win7中，在登录界面连续按<code>shift</code>键5次可以调出粘滞键提示，而这个提示位于<code>c:\windows\system32</code>路径下，因此可以将这个提示程序掉包成cmd程序，实现在登录界面打开cmd程序，完成密码的重置或用户创建进而登录系统。</p><h2 id="利用过程"><a href="#利用过程" class="headerlink" title="利用过程"></a>利用过程</h2><p>1.首先，我们来测试win7是否有这个漏洞，我们在登录界面不输入密码，连按5次<code>shift</code>键，发现弹出了粘滞键提示。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step1.png" alt></p><a id="more"></a><p>2.我们强制关机，使其弹出如下界面，并选择启动修复。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step2.png" alt></p><p>3.弹出的这个界面中，我们点击取消。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step3.png" alt></p><p>4.等待系统进行修复（时间很长）。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step4.png" alt></p><p>5.在这个界面中，点击查看问题详细信息。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step5.png" alt></p><p>6.将详细信息拉到底部，有两个链接，一个是微软的链接，一个是本地链接，而且是个txt文件，我们点击txt链接。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step6.png" alt></p><p>7.打开txt后，点击右上角的“文件”–&gt;“打开”。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step7.png" alt></p><p>8.打开后，可以查看到系统的各种文件。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step8.png" alt></p><p>9.我们定位到<code>c:\windows\system32</code>路径下，找到粘滞键提示sethc，并给其改名。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step9.png" alt><br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step10.png" alt></p><p>10.我们找到同路径下的cmd程序，复制一份，改名为sethc，之后重启。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step11.png" alt><br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step12.png" alt></p><p>11.在登录界面，连按5次<code>shift</code>键调出cmd，输入<code>whoami</code>，发现是管理员身份，可直接对用户进行密码的重置（建议新建一个用户，并赋予管理员权限，从而方便的进行后续痕迹的擦除）<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step13.png" alt><br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step14.png" alt></p><p>12.修改密码后，我们输入修改后的密码，成功登入系统。<br><img src="/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step15.png" alt></p>]]></content>
     
     <summary type="html">
     
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>xxx</title>
-    <link href="http://yoursite.com/2020/09/06/xxx/"/>
-    <id>http://yoursite.com/2020/09/06/xxx/</id>
-    <published>2020-09-06T11:04:57.000Z</published>
-    <updated>2020-09-06T03:04:57.740Z</updated>
-    
-    <summary type="html">
+      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;部分win7中，在登录界面连续按&lt;code&gt;shift&lt;/code&gt;键5次可以调出粘滞键提示，而这个提示位于&lt;code&gt;c:\windows\system32&lt;/code&gt;路径下，因此可以将这个提示程序掉包成cmd程序，实现在登录界面打开cmd程序，完成密码的重置或用户创建进而登录系统。&lt;/p&gt;&lt;h2 id=&quot;利用过程&quot;&gt;&lt;a href=&quot;#利用过程&quot; class=&quot;headerlink&quot; title=&quot;利用过程&quot;&gt;&lt;/a&gt;利用过程&lt;/h2&gt;&lt;p&gt;1.首先，我们来测试win7是否有这个漏洞，我们在登录界面不输入密码，连按5次&lt;code&gt;shift&lt;/code&gt;键，发现弹出了粘滞键提示。&lt;br&gt;&lt;img src=&quot;/images/win7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/step1.png&quot; alt&gt;&lt;/p&gt;
     
     </summary>
     
+      <category term="Cyber Security" scheme="http://yoursite.com/categories/Cyber-Security/"/>
+    
+    
+      <category term="exploit" scheme="http://yoursite.com/tags/exploit/"/>
     
   </entry>
   

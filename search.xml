@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[yslw]]></title>
-    <url>%2F2020%2F09%2F06%2Fyslw%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[xxx]]></title>
-    <url>%2F2020%2F09%2F06%2Fxxx%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[win7粘滞键漏洞利用]]></title>
+    <url>%2F2020%2F12%2F09%2Fwin7%E7%B2%98%E6%BB%9E%E9%94%AE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[原理部分win7中，在登录界面连续按shift键5次可以调出粘滞键提示，而这个提示位于c:\windows\system32路径下，因此可以将这个提示程序掉包成cmd程序，实现在登录界面打开cmd程序，完成密码的重置或用户创建进而登录系统。利用过程1.首先，我们来测试win7是否有这个漏洞，我们在登录界面不输入密码，连按5次shift键，发现弹出了粘滞键提示。 2.我们强制关机，使其弹出如下界面，并选择启动修复。 3.弹出的这个界面中，我们点击取消。 4.等待系统进行修复（时间很长）。 5.在这个界面中，点击查看问题详细信息。 6.将详细信息拉到底部，有两个链接，一个是微软的链接，一个是本地链接，而且是个txt文件，我们点击txt链接。 7.打开txt后，点击右上角的“文件”–&gt;“打开”。 8.打开后，可以查看到系统的各种文件。 9.我们定位到c:\windows\system32路径下，找到粘滞键提示sethc，并给其改名。 10.我们找到同路径下的cmd程序，复制一份，改名为sethc，之后重启。 11.在登录界面，连按5次shift键调出cmd，输入whoami，发现是管理员身份，可直接对用户进行密码的重置（建议新建一个用户，并赋予管理员权限，从而方便的进行后续痕迹的擦除） 12.修改密码后，我们输入修改后的密码，成功登入系统。]]></content>
+      <categories>
+        <category>Cyber Security</category>
+      </categories>
+      <tags>
+        <tag>exploit</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Ethereum私有链部署]]></title>
