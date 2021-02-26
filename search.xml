@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[攻防世界Web题4-6]]></title>
+    <url>%2F2021%2F02%2F27%2F%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWeb%E9%A2%984-6%2F</url>
+    <content type="text"><![CDATA[4.cookie题目描述X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’解题过程1.打开给出的web界面，同时F12查看cookie，发现有个cookie.php文件2.直接访问cookie.php，看到提示查看response，F12查看response，flag就在response中 补充知识什么是cookie？HTTP协议是无状态协议，即服务器无法判断用户身份。cookie实际上是一小段的文本信息（key-value格式）。客户端向服务器发送请求，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个cookie。客户端浏览器会把cookie保存起来。当浏览器再次请求该网站时，浏览器把请求的网址连同该cookie一同提交给服务器。服务器检查该cookie，以此来辨认用户状态。 cookie机制当用户第一次访问并登陆一个网站时，cookie的设置以及发送会经历一下四个步骤：客户端发送一个请求到服务器–&gt;服务器发送一个HttpResponse响应到客户端，其中包含Set-Cookie的头部–&gt;客户端保存cookie，之后向服务器发送请求时，HttpRequest请求中会包含一个Cookie的头部–&gt;服务器返回响应数据 5.disabled_button题目描述X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？ 解题过程1.打开给出的web界面，F12查看源代码，发现按钮class类中有个disabled描述。 2.删除disabled描述后，发现按钮亮起。 3.点击按钮，flag出现。 6.weak_auth题目描述小宁写了一个登陆验证页面，随手就设了一个密码。 解题过程1.打开给出的web界面，直接点击login按钮，提示用admin登录，接下来只需要知道密码即可 2.使用burpsuite进行密码暴破，按长度排序（一般正确密码与错误密码长度明显不同），得到密码123456，查看其response，得到flag]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[攻防世界Web题1-3]]></title>
+    <url>%2F2021%2F02%2F27%2F%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWeb%E9%A2%981-3%2F</url>
+    <content type="text"><![CDATA[1.view_source题目描述X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。解题过程1.打开给出的web界面，同时F12查看源代码，发现flag就在其中2.robots题目描述X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。 解题过程1.打开给出的web界面，F12查看源代码，发现什么都没有 2.查看robots文件，查看方法（地址后添加/robots.txt） 3.发现根目录下有个f1ag_1s_h3re.php文件，直接通过url访问，找到flag 补充知识robots协议12Robots协议（也称为爬虫协议、机器人协议等）的全称是“网络爬虫排除标准”（Robots ExclusionProtocol），网站通过Robots协议告诉引擎哪些页面可以抓取，哪些页面不能抓取。 根据协议，网站管理员可以在网站域名的根目录下放一个robots.txt文本文件，里面可以指定不同的网络爬虫能访问和禁止访问的页面，指定的页面由正则表达式表示。网络爬虫在采集这个网站前，首先获取到这个文件，然后解析到其中的规则，然后根据规则来采集网站的数据。 robots协议的写法最简单的robots.txt只有两条规则： 12User-agent:指定对哪些爬虫生效Disallow:指定要屏蔽的网址 先说User-agent，爬虫抓取时会声明自己的身份，这就是User-agent，没错，就是http协议里的User-agent。robots.txt利用User-agent来区分各个引擎的爬虫，比如google网页搜索爬虫的User-agent为Googlebot。 禁止爬虫访问所有目录： 12User-agent:*Disallow:/ 3.backup题目描述X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！ 解题过程1.打开给出的web界面，F12查看源代码，发现什么都没有 2.查看根目录下是否存在bak文件，发现可以直接下载bak文件 3.打开下载好的bak文件，找到flag 补充知识bakbak是备份文件的文件格式扩展名，这类文件一般在.bak前面加上原来的扩展名。 文件恢复：一般可以通过直接重命名把bak替换成该文件的格式就可以恢复文件并可以正常打开。]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[三层交换机vlan-DHCP中继]]></title>
     <url>%2F2021%2F02%2F04%2F%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BAvlan-DHCP%E4%B8%AD%E7%BB%A7%2F</url>
     <content type="text"><![CDATA[实验描述实现不同vlan间的相互通信，并且每台pc能够自动获取ip,同时能够访问外网资源实验如图：开始配置1.配置trunk，先将三个二层交换机与三层交换机相连的端口配置为trunk。二层交换机配置命令：123confint f0/*switchport mode trunk三层交换机配置命令：1234confint range f0/1-3switchport trunk encapsulation dot1qswitchport mode trunk 2.三层交换机上配置vtp（自动同步至其余交换机） 1vtp domain name 3.创建vlan 1vlan 10,20,30,40 4.将端口加入vlan 12int f0/*switchport access vlan 10 5.开启三层交换机路由功能 1ip routing 6.为三层交换机配置虚拟vlan(其余vlan同理) 123int vlan 10ip add 10.1.1.254 255.255.255.0no shut 7.三层交换机上配置DHCP中继(其余vlan同理) 12int vlan 10ip helper-address 40.1.1.1 8.配置DNS服务器IP，开启DNS服务器的DHCP服务，并分别配置地址池 9.将几台pc全部调整为DHCP，自动获取ip 10.不同vlan间已实现相互通信，DNS服务器开启DNS、HTTP服务 11.不同pc可以通过域名访问服务器 12.三层交换机设置默认路由,通向外网 12345int f0/4no switchportip add 50.1.1.1 255.255.255.0no shutip route 0.0.0.0 0.0.0.0 50.1.1.2 13.配置路由器1（从左往右） 1234567891011int f0/0ip add 50.1.1.2 255.255.255.0no shutint f0/1ip add 60.1.1.1 255.255.255.0no shutip route 70.1.1.0 255.255.255.0 60.1.1.2ip route 10.1.1.0 255.255.255.0 50.1.1.1ip route 20.1.1.0 255.255.255.0 50.1.1.1ip route 30.1.1.0 255.255.255.0 50.1.1.1ip route 40.1.1.0 255.255.255.0 50.1.1.1 14.配置路由器2 12345678910int f0/1ip add 60.1.1.2 255.255.255.0no shutint f0/0ip add 70.1.1.254 255.255.255.0no shutip route 10.1.1.0 255.255.255.0 60.1.1.1ip route 20.1.1.0 255.255.255.0 60.1.1.1ip route 30.1.1.0 255.255.255.0 60.1.1.1ip route 40.1.1.0 255.255.255.0 60.1.1.1 15.配置外网服务的ip 16.验证是否可以访问 查看信息指令： 123查看接口ip：do show ip int brief查看路由信息：do show ip route查看vlan信息：do show vlan brief]]></content>
